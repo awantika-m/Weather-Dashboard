@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7-Day Weather Forecast Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="main-container">
+  
+    <header class="header">
+      <h1>📅 7-Day Weather Forecast</h1>
+      <p class="subtitle">Get your complete weekly forecast with hourly details</p>
+    </header>
+
+    <section class="search-section">
+      <div class="search-box">
+        <input 
+          type="text" 
+          id="city" 
+          placeholder="Enter city name (e.g., London, New York, Mumbai)..." 
+          class="city-input"
+        >
+        <button id="searchBtn" class="search-btn">Search</button>
+      </div>
+    </section>
+
+    
+    <div id="loading" class="loading hidden">
+      <div class="spinner"></div>
+      <p>Fetching 7-day forecast...</p>
+    </div>
+
+    
+    <div id="error" class="error-container hidden"></div>
+
+ 
+    <div id="currentWeather" class="current-weather-section hidden"></div>
+
+
+    <div id="forecastContainer" class="forecast-container hidden">
+      <div id="forecastGrid" class="forecast-grid"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
