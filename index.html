@@ -1,49 +1,286 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>7-Day Weather Forecast Dashboard</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High-End Weather Dashboard</title>
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="main-container">
+   
+    <div class="video-container">
+        <video autoplay loop muted playsinline id="bg-video">
+            <source src="3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <div class="app-wrapper">
+        
+   
+        <nav class="top-nav glass-panel">
+            <div class="nav-left">
+                <div class="logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17.5 19C19.9853 19 22 16.9853 22 14.5C22 12.1325 20.176 10.2078 17.8573 10.0211C17.5348 6.64332 14.6853 4 11.25 4C7.45304 4 4.375 7.07804 4.375 10.875C4.375 11.1353 4.39401 11.3912 4.43085 11.6416C2.45353 12.336 1 14.2494 1 16.5C1 19.5376 3.46243 22 6.5 22H17.5V19Z" fill="currentColor" fill-opacity="0.2"/>
+                    </svg>
+                    <span>WeatherPro</span>
+                </div>
+                <form class="search-bar" id="search-form">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="search-input" placeholder="Search for cities or places..." required>
+                    <button type="submit" style="display:none"></button>
+                </form>
+            </div>
+            
+            <div class="nav-right">
+                <div class="dropdown">Ranking ⌄
+                    <ul class="dropdown-menu glass-panel">
+                        <li><a href="#">Top Cities</a></li>
+                        <li><a href="#">Worst Air Quality</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">Products ⌄
+                    <ul class="dropdown-menu glass-panel">
+                        <li><a href="#">Monitors</a></li>
+                        <li><a href="#">Sensors</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">Lang: EN ⌄
+                    <ul class="dropdown-menu glass-panel">
+                        <li><a href="#">English</a></li>
+                        <li><a href="#">Hindi</a></li>
+                    </ul>
+                </div>
+                <button class="btn-login glass-btn" id="login-btn">Login / Signup</button>
+            </div>
+        </nav>
+
+        <nav class="sub-nav glass-panel">
+            <ul class="sub-nav-links">
+                <li class="active"><a href="#">Weather</a></li>
+                <li><a href="#">Daily</a></li>
+                <li><a href="#">Hourly</a></li>
+                <li><a href="#">Monthly</a></li>
+                <li><a href="#">Rankings</a></li>
+                <li><a href="#">Blogs</a></li>
+                <li><a href="#">Climate Change</a></li>
+            </ul>
+        </nav>
+
+        <main class="dashboard-container">
+           
+            <header class="location-header">
+                <div>
+                    <h1 id="city-title">Sonipat, Haryana, India</h1>
+                    <p id="live-time" class="text-secondary">Loading time...</p>
+                </div>
+                <div class="actions">
+                    <button class="glass-btn icon-btn" id="share-btn" title="Share">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                    </button>
+                    <button class="glass-btn icon-btn" id="fav-btn" title="Favorites">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </button>
+                </div>
+            </header>
+
+    
+            <section class="hero-card glass-panel">
+                <div class="hero-primary">
+                    <div class="weather-icon-large">
+                        <svg width="84" height="84" viewBox="0 0 24 24" fill="none" class="sun-icon">
+                            <circle cx="12" cy="12" r="5" fill="#FFD700"></circle>
+                            <g stroke="#FFD700" stroke-width="2" stroke-linecap="round">
+                                <line x1="12" y1="1" x2="12" y2="4"></line>
+                                <line x1="12" y1="20" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="6.34" y2="6.34"></line>
+                                <line x1="17.66" y1="17.66" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="4" y2="12"></line>
+                                <line x1="20" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="6.34" y2="17.66"></line>
+                                <line x1="17.66" y1="6.34" x2="19.78" y2="4.22"></line>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="temp-display">
+                        <h2 class="temperature" id="current-temp">--°<span>C</span></h2>
+                        <p class="condition" id="current-condition">Loading...</p>
+                        <p class="feels-like text-secondary" id="current-feels-like">Feels Like: --°C</p>
+                    </div>
+                </div>
+
+                <div class="hero-secondary">
+                    <div class="stat-item">
+                        <span class="stat-label">Chances of Rain</span>
+                        <span class="stat-value" id="current-rain-chance">--%</span>
+                    </div>
+                    <div class="stat-item vertical-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-label">Air Quality</span>
+                        <div class="aqi-badge">
+                            <span class="aqi-value" id="current-aqi">--</span>
+                        </div>
+                    </div>
+                    <div class="stat-item vertical-divider"></div>
+                    <div class="stat-item humidity-gauge">
+                        <div class="circular-progress" style="--prog: 0deg;" id="humidity-progress">
+                            <div class="inner-circle">
+                                <span id="current-humidity-text">--%</span>
+                                <small>Humidity</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
   
-    <header class="header">
-      <h1>📅 7-Day Weather Forecast</h1>
-      <p class="subtitle">Get your complete weekly forecast with hourly details</p>
-    </header>
+            <section class="parameters-grid">
+            
+                <div class="param-card glass-panel">
+                    <div class="param-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg></div>
+                    <div class="param-info">
+                        <p class="param-label">Wind Direction</p>
+                        <p class="param-value" id="val-wind-dir">--</p>
+                    </div>
+                </div>
+                
+                <div class="param-card glass-panel">
+                    <div class="param-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path></svg></div>
+                    <div class="param-info">
+                        <p class="param-label">Wind Speed</p>
+                        <p class="param-value" id="val-wind-speed">-- km/h</p>
+                    </div>
+                </div>
+         
+                <div class="param-card glass-panel">
+                    <div class="param-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4a2 2 0 1 1-2 2H2V4h9z m7.41 12.59A2 2 0 1 1 17 20h-7v-3h8.41zM2 12h17a2 2 0 1 0-2-2H2v2z"></path></svg></div>
+                    <div class="param-info">
+                        <p class="param-label">Gust Speed</p>
+                        <p class="param-value" id="val-gust">-- km/h</p>
+                    </div>
+                </div>
+             
+                <div class="param-card glass-panel">
+                    <div class="param-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19C19.9853 19 22 16.9853 22 14.5C22 12.1325 20.176 10.2078 17.8573 10.0211C17.5348 6.64332 14.6853 4 11.25 4C7.45304 4 4.375 7.07804 4.375 10.875C4.375 11.1353 4.39401 11.3912 4.43085 11.6416C2.45353 12.336 1 14.2494 1 16.5C1 19.5376 3.46243 22 6.5 22H17.5V19Z"></path></svg></div>
+                    <div class="param-info">
+                        <p class="param-label">Cloud Cover</p>
+                        <p class="param-value" id="val-cloud">--%</p>
+                    </div>
+                </div>
+               
+                <div class="param-card glass-panel">
+                    <div class="param-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></div>
+                    <div class="param-info">
+                        <p class="param-label">Visibility</p>
+                        <p class="param-value" id="val-vis">-- km</p>
+                    </div>
+                </div>
+            
+                <div class="param-card glass-panel">
+                    <div class="param-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16.2A4.5 4.5 0 0 0 17.5 8h-1.8A7 7 0 1 0 4 14.9"></path><path d="M16 14v6"></path><path d="M8 14v6"></path><path d="M12 16v6"></path></svg></div>
+                    <div class="param-info">
+                        <p class="param-label">Precipitation</p>
+                        <p class="param-value" id="val-precip">-- mm</p>
+                    </div>
+                </div>
+               
+                <div class="param-card glass-panel">
+                    <div class="param-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+                    <div class="param-info">
+                        <p class="param-label">Pressure</p>
+                        <p class="param-value" id="val-pressure">-- mb</p>
+                    </div>
+                </div>
+        
+                <div class="param-card glass-panel">
+                    <div class="param-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="6.34" y2="6.34"></line><line x1="17.66" y1="17.66" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="6.34" y2="17.66"></line><line x1="17.66" y1="6.34" x2="19.78" y2="4.22"></line></svg></div>
+                    <div class="param-info">
+                        <p class="param-label">UV Index</p>
+                        <p class="param-value" id="val-uv">--</p>
+                    </div>
+                </div>
+            </section>
 
-    <section class="search-section">
-      <div class="search-box">
-        <input 
-          type="text" 
-          id="city" 
-          placeholder="Enter city name (e.g., London, New York, Mumbai)..." 
-          class="city-input"
-        >
-        <button id="searchBtn" class="search-btn">Search</button>
-      </div>
-    </section>
+            <section class="forecast-section glass-panel">
+                <div class="section-header">
+                    <h3>10-Day Forecast</h3>
+                </div>
+                
+                <div class="forecast-tabs-container">
+                    <ul class="forecast-tabs" id="forecast-tabs">
+                        
+                    </ul>
+                </div>
 
-    
-    <div id="loading" class="loading hidden">
-      <div class="spinner"></div>
-      <p>Fetching 7-day forecast...</p>
+                <div class="chart-container">
+                    <canvas id="tempAreaChart" width="1000" height="150"></canvas>
+                </div>
+            </section>
+
+            <section class="hourly-section glass-panel">
+                <div class="section-header">
+                    <h3>Hourly Forecast</h3>
+                    <div class="dropdown">
+                        <div class="filter-dropdown glass-btn" id="time-filter-btn">Today ⌄</div>
+                        <ul class="dropdown-menu glass-panel" style="right:0; left:auto;">
+                            <li><a href="#" data-filter="today" class="hr-filter">Today</a></li>
+                            <li><a href="#" data-filter="tomorrow" class="hr-filter">Tomorrow</a></li>
+                            <li><a href="#" data-filter="all" class="hr-filter">Next 3 Days</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table class="hourly-table">
+                        <thead>
+                            <tr>
+                                <th class="sortable" data-sort="time">Time ↕</th>
+                                <th>Condition</th>
+                                <th class="sortable" data-sort="temp">Temp (°C) ↕</th>
+                                <th class="sortable" data-sort="humidity">Humidity ↕</th>
+                                <th class="sortable" data-sort="uv">UV Index ↕</th>
+                                <th class="sortable" data-sort="wind">Wind Speed ↕</th>
+                            </tr>
+                        </thead>
+                        <tbody id="hourly-tbody">
+                          
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+        
+        <footer class="footer">
+            <p>&copy; 2026 WeatherPro Dashboard. All rights reserved.</p>
+        </footer>
     </div>
 
-    
-    <div id="error" class="error-container hidden"></div>
-
- 
-    <div id="currentWeather" class="current-weather-section hidden"></div>
-
-
-    <div id="forecastContainer" class="forecast-container hidden">
-      <div id="forecastGrid" class="forecast-grid"></div>
+  
+    <div class="modal-overlay" id="login-modal">
+        <div class="modal-glass glass-panel">
+            <button class="close-modal" id="close-login">&times;</button>
+            <h2>Welcome Back</h2>
+            <p class="text-secondary">Sign in to your WeatherPro account.</p>
+            <input type="email" placeholder="Email Address" class="modal-input">
+            <input type="password" placeholder="Password" class="modal-input">
+            <button class="glass-btn modal-submit" id="auth-btn">Sign In</button>
+        </div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
+
+    <div id="toast-notification" class="glass-panel"></div>
+
+    <script src="script.js"></script>
 </body>
 </html>
+
